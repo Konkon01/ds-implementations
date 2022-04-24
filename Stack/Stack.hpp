@@ -51,7 +51,7 @@ public:
   {
     if( isEmpty() )
     {
-      std::cout << "The Stack is empty, there is no element to be popped!\n";
+      throw "The Stack is empty, there is no element to be popped!\n";
     }
     return values[--top];
   }
