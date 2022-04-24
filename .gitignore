@@ -1,3 +1,5 @@
 # Ignores all main.cpp files
 # main.cpp files are only used for ds testings
 main.cpp
+
+a.out
