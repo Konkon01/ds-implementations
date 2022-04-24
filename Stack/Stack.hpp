@@ -31,28 +31,27 @@ public:
 
   void push( T newElement )
   {
-    if( !isFull() )
+    if( isFull() )
     {
-      values[top++] = newElement;
-      return;
+      throw "The Stack is full new elements can't be added!\n";
     }
-    std::cout << "The Stack is full new elements can't be added!\n";
+    values[top++] = newElement;
   }
 
   T getTop()
   {
-    if( !isEmpty() )
+    if( isEmpty() )
     {
-      return values[top - 1];
+      throw "The Stack is empty, there is no top element!\n";
     }
-    std::cout << "The Stack is empty!\n";
+    return values[top - 1];
   }
 
   T pop()
   {
     if( isEmpty() )
     {
-      std::cout << "The Stack is empty!\n";
+      std::cout << "The Stack is empty, there is no element to be popped!\n";
     }
     return values[--top];
   }
