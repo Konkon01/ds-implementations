@@ -1,5 +1,6 @@
 #ifndef BST_HPP
 #define BST_HPP
+#include "../Queue/Queue.hpp"
 
 template <typename T>
 class BinarySearchTree
@@ -176,7 +177,24 @@ public:
   {
     inOrder(root);
   }
-  
+
+  void levelOrderTraversal()
+  {
+    Queue<Node*, 10> queue;
+    queue.add(root);
+    while(!queue.isEmpty())
+    {
+      Node* e = queue.remove();
+      if(e->left != nullptr)
+        queue.add(e->left);
+
+      if(e->right != nullptr)
+        queue.add(e->right);
+
+      std::cout << e->key << " ";
+    }
+  }
+
   ~BinarySearchTree()
   {
     deleteSubTree(root);
