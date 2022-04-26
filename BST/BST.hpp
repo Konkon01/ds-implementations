@@ -110,6 +110,17 @@ private:
     } 
   }
 
+  void inOrder(Node* root)
+  {
+    if(root->left != nullptr)
+      inOrder(root->left);
+
+    std::cout << root->key << " ";
+
+    if(root->right != nullptr)
+      inOrder(root->right);
+  }
+
 public:
   BinarySearchTree() = delete;
 
@@ -161,6 +172,11 @@ public:
     recDel(root, value);
   }
 
+  void inOrderTreeTraversal()
+  {
+    inOrder(root);
+  }
+  
   ~BinarySearchTree()
   {
     deleteSubTree(root);
