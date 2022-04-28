@@ -134,6 +134,18 @@ private:
     }
   }
 
+  int subTreeSize(Node* root)
+  {
+    if(root == nullptr)
+    {
+      return 0;
+    }
+    else
+    {
+      return 1 + subTreeSize(root->left) + subTreeSize(root->right);
+    }
+  }
+
 public:
   BinarySearchTree() = delete;
 
@@ -197,7 +209,7 @@ public:
 
   void levelOrderTraversal()
   {
-    Queue<Node*, 10> queue;
+    Queue<Node*, 10> queue; // Only works on small trees, because of 10
     queue.add(root);
     while(!queue.isEmpty())
     {
@@ -210,6 +222,11 @@ public:
 
       std::cout << e->key << " ";
     }
+  }
+
+  int size()
+  {
+    return subTreeSize(root);
   }
 
   ~BinarySearchTree()
