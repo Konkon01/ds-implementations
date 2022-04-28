@@ -122,6 +122,18 @@ private:
       inOrder(root->right);
   }
 
+  int subTreeHeight(Node* root)
+  {
+    if(root == nullptr)
+    {
+      return -1;
+    }
+    else
+    {
+      return std::max(subTreeHeight(root->left), subTreeHeight(root->right)) + 1;
+    }
+  }
+
 public:
   BinarySearchTree() = delete;
 
@@ -171,6 +183,11 @@ public:
   void remove( T value )
   {
     recDel(root, value);
+  }
+
+  int height()
+  {
+    return subTreeHeight(root);
   }
 
   void inOrderTreeTraversal()
