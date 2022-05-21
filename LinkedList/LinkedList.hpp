@@ -22,9 +22,10 @@ class LinkedList // H1L
 
 private:
   Node* head;
+  int length;
 
 public:
-  LinkedList() : head()
+  LinkedList() : head(), length(0)
   {}
 
   LinkedList(T val)
@@ -32,6 +33,12 @@ public:
     head = new Node();
     Node* newNode = new Node(val);
     head->next = newNode;
+    length = 1;
+  }
+
+  int size()
+  {
+    return length;
   }
 
   void push(T value)
@@ -44,6 +51,7 @@ public:
       temp = temp->next;
     }
     temp->next = newNode;
+    length++;
   }
 
   void insert(T value, int atIndex)
@@ -58,6 +66,7 @@ public:
     }
     newNode->next = temp->next;
     temp->next = newNode;
+    length++;
   }
 
   friend std::ostream& operator<<(std::ostream& os, const LinkedList& obj)
