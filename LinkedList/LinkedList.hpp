@@ -24,6 +24,22 @@ private:
   Node* head;
   int length;
 
+  Node* unlink(int index)
+  {
+    Node* pre = head;
+    Node* temp = head->next;
+    while(temp->next != nullptr && index > 0)
+    {
+      pre = temp;
+      temp = temp->next;
+      index--;
+    }
+    pre->next = temp->next;
+    temp->next = nullptr;
+    length--;
+    return temp;  
+  }
+
 public:
   LinkedList() : head(), length(0)
   {}
@@ -67,6 +83,18 @@ public:
     newNode->next = temp->next;
     temp->next = newNode;
     length++;
+  }
+
+  void pop()
+  {
+    Node* popped = unlink(length);
+    delete popped;
+  }
+
+  void remove(int index)
+  {
+    Node* removed = unlink(index);
+    delete removed;
   }
 
   friend std::ostream& operator<<(std::ostream& os, const LinkedList& obj)
