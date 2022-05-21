@@ -34,6 +34,18 @@ public:
     head->next = newNode;
   }
 
+  void push(T value)
+  {
+    Node* newNode = new Node(value);
+    Node* temp = head;
+    
+    while(temp->next != nullptr)
+    {
+      temp = temp->next;
+    }
+    temp->next = newNode;
+  }
+
   ~LinkedList()
   {
     Node* temp = head;
