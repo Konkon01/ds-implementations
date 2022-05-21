@@ -46,6 +46,18 @@ public:
     temp->next = newNode;
   }
 
+  friend std::ostream& operator<<(std::ostream& os, const LinkedList& obj)
+  {
+    Node* temp = obj.head;
+    temp = temp->next;
+    while(temp != nullptr)
+    {
+      os << temp->value << " ";
+      temp = temp->next;
+    }
+    return os;
+  }
+
   ~LinkedList()
   {
     Node* temp = head;
