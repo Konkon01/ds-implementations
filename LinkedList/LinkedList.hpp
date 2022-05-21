@@ -46,6 +46,20 @@ public:
     temp->next = newNode;
   }
 
+  void insert(T value, int atIndex)
+  {
+    Node* newNode = new Node(value);
+    Node* temp = head;
+
+    while(temp->next != nullptr && atIndex > 0)
+    {
+      temp = temp->next;
+      atIndex--;
+    }
+    newNode->next = temp->next;
+    temp->next = newNode;
+  }
+
   friend std::ostream& operator<<(std::ostream& os, const LinkedList& obj)
   {
     Node* temp = obj.head;
